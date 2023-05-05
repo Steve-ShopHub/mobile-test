@@ -4,9 +4,12 @@
     <title>Test Links</title>
 </head>
 <body>
-    <h1>Test Links</h1>
+    <h1>Ways to Earn</h1>
     <a href="instagram://user?username=tryshophub" id="instagram">Follow @tryshophub on Instagram</a><br>
-    <a href="twitter://user?screen_name=tryshophub" id="twitter">Follow @tryshophub on Twitter</a>
+    <a href="twitter://user?screen_name=tryshophub" id="twitter">Follow @tryshophub on Twitter</a><br>
+    <a href="fb://page/tryshophub" id="facebook">Follow @tryshophub on Facebook</a><br>
+    <a href="https://www.facebook.com/tryshophub/" id="visitFacebook">Visit @tryshophub on Facebook</a><br>
+    <a href="#" id="shareFacebook">Share on Facebook</a>
 
     <script>
         function isMobileDevice() {
@@ -30,8 +33,21 @@
             }
         }
 
+        function shareOnFacebook() {
+            const urlToShare = encodeURIComponent('https://www.facebook.com/tryshophub/');
+            const facebookSharerUrl = `https://www.facebook.com/sharer/sharer.php?u=${urlToShare}`;
+            window.open(facebookSharerUrl, 'sharer', 'toolbar=0,status=0,width=626,height=436');
+        }
+
+        document.getElementById('shareFacebook').addEventListener('click', function (event) {
+            event.preventDefault();
+            shareOnFacebook();
+        });
+
         updateOnClick("instagram", "instagram://user?username=tryshophub", "https://instagram.com/tryshophub");
         updateOnClick("twitter", "twitter://user?screen_name=tryshophub", "https://twitter.com/tryshophub");
+        updateOnClick("facebook", "fb://page/tryshophub", "https://www.facebook.com/tryshophub/");
+        // No need to update onClick for "visitFacebook" as it directly opens the URL in the browser.
     </script>
 </body>
 </html>
