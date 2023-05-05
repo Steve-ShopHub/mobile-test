@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Links</title>
+</head>
+<body>
+    <h1>Test Links</h1>
+    <a href="instagram://user?username=tryshophub" id="instagram">Follow @tryshophub on Instagram</a><br>
+    <a href="twitter://user?screen_name=tryshophub" id="twitter">Follow @tryshophub on Twitter</a>
+
+    <script>
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        function updateOnClick(elementId, url, fallbackUrl) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    if (isMobileDevice()) {
+                        window.location.href = url;
+                        setTimeout(function () {
+                            window.location.href = fallbackUrl;
+                        }, 25);
+                    } else {
+                        window.location.href = fallbackUrl;
+                    }
+                });
+            }
+        }
+
+        updateOnClick("instagram", "instagram://user?username=tryshophub", "https://instagram.com/tryshophub");
+        updateOnClick("twitter", "twitter://user?screen_name=tryshophub", "https://twitter.com/tryshophub");
+    </script>
+</body>
+</html>
