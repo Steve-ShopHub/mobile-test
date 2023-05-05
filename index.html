@@ -9,7 +9,8 @@
     <a href="twitter://user?screen_name=tryshophub" id="twitter">Follow @tryshophub on Twitter</a><br>
     <a href="fb://page/tryshophub" id="facebook">Follow @tryshophub on Facebook</a><br>
     <a href="https://www.facebook.com/tryshophub/" id="visitFacebook">Visit @tryshophub on Facebook</a><br>
-    <a href="#" id="shareFacebook">Share on Facebook</a>
+    <a href="#" id="shareFacebook">Share on Facebook</a><br>
+    <a href="#" id="shareTwitter">Share on Twitter</a>
 
     <script>
         function isMobileDevice() {
@@ -39,9 +40,21 @@
             window.open(facebookSharerUrl, 'sharer', 'toolbar=0,status=0,width=626,height=436');
         }
 
+        function shareOnTwitter() {
+            const urlToShare = encodeURIComponent('https://www.facebook.com/tryshophub/');
+            const text = encodeURIComponent('Check out @tryshophub on Facebook!');
+            const twitterShareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${urlToShare}`;
+            window.open(twitterShareUrl, 'sharer', 'toolbar=0,status=0,width=626,height=436');
+        }
+
         document.getElementById('shareFacebook').addEventListener('click', function (event) {
             event.preventDefault();
             shareOnFacebook();
+        });
+
+        document.getElementById('shareTwitter').addEventListener('click', function (event) {
+            event.preventDefault();
+            shareOnTwitter();
         });
 
         updateOnClick("instagram", "instagram://user?username=tryshophub", "https://instagram.com/tryshophub");
